@@ -1,0 +1,26 @@
+version: "3"
+volumes:
+  psql:
+  cache:
+    driver: local
+services:
+  psql:
+    image: postgres:latest  
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    volumes:
+      - psql:/var/lib/postgresql/data
+    ports:
+      - 5555:5432 
+  cache:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - 6379:6379
+    command: redis-server --save 20 1 --loglevel warning --requirepass 1234
+    volumes:
+      - cache:/data
+    environment:
+      REDIS_USER: redis
+      REDIS_PASSWORD: 1234

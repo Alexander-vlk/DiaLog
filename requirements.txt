@@ -12,6 +12,7 @@ djangorestframework
 django-browser-reload 
 django-debug-toolbar
 django-filter
+django-redis
 django-tailwind
 idna
 markdown

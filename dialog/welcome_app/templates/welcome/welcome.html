@@ -1,0 +1,11 @@
+{% include "base.html" %}
+{% load cache %}
+
+{% block header %}
+<h1>Test</h1>
+{% cache 10 username request.user %}
+<p>
+    {{request.user}}
+</p>
+{% endcache %}
+{% endblock header %}
